@@ -13,9 +13,9 @@ function App() {
     const list = userlist.filter((user)=>user.id !== id);
     setUserList(list);
   }
-  const adduser = (name, id, dept)=>{
-    //const list;
-    //setUserList(list);
+  const adduser = (id, name, dept)=>{
+    const list = userlist.concat({id, name, dept});
+    setUserList(list);
   }
 
   return (
@@ -32,11 +32,9 @@ function App() {
             </div>
           </Route>
           <Route path='/create'>
-              <CreateUser list={userlist} addCallback={adduser}/>
+              <CreateUser createCallback={adduser}/>
           </Route>
-          <Route path='/edit/' children={<h1>Edit form</h1>}>
-              <EditUser/>
-          </Route>
+          <Route path='/edit/:id' children={<EditUser/>}></Route>
           <Route path='*'>
               404 not found
           </Route>          

@@ -1,5 +1,5 @@
-
-const CreateUser = ()=>{
+import React from "react";
+const CreateUser = ({createCallback})=>{
     return(
         <div>
             <table>
@@ -7,7 +7,7 @@ const CreateUser = ()=>{
                     <td>
                         <label>
                             Name:
-                            <input type="text"/>
+                            <input type="text" name="name" id="name"/>
                         </label>
                     </td>
                 </tr>
@@ -15,7 +15,7 @@ const CreateUser = ()=>{
                     <td>
                         <label>
                             Id:
-                            <input type="number"/>
+                            <input type="number" name="id" id="id"/>
                         </label>
                     </td>
                 </tr>
@@ -23,12 +23,12 @@ const CreateUser = ()=>{
                     <td>
                         <label>
                             Dept:
-                            <input type="text"/>
+                            <input type="text" dept="dept" id="dept"/>
                         </label>
                     </td>
                 </tr>
             </table>
-            <button>Delete</button>
+            <button onClick={()=>createCallback()}>Create</button>
         </div>
     );
 }
