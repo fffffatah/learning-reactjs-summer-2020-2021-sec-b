@@ -1,22 +1,24 @@
 import {useParams} from 'react-router-dom';
-const EditUser = ()=>{
+import { useState } from 'react';
+const EditUser = ({editCallback})=>{
     const {id:eid} = useParams();
+    const [name, setName] = useState('');
+    const [dept, setDept] = useState('');
     return(
         <div>
             <table>
                 <tr align="right">
                     <td>
                         <label>
-                            Name:
-                            <input type="text"/>
+                            Id: {eid}
                         </label>
                     </td>
                 </tr>
                 <tr align="right">
                     <td>
                         <label>
-                            Id:
-                            <input type="number" value={eid}/>
+                            Name:
+                            <input type="text" onChange={event => setName(event.target.value)}/>
                         </label>
                     </td>
                 </tr>
@@ -24,12 +26,12 @@ const EditUser = ()=>{
                     <td>
                         <label>
                             Dept:
-                            <input type="text"/>
+                            <input type="text" onChange={event => setDept(event.target.value)}/>
                         </label>
                     </td>
                 </tr>
             </table>
-            <button>Edit</button>
+            <button onClick={()=>editCallback(eid,name,dept)}>Edit</button>
         </div>
     );
 }
