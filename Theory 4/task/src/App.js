@@ -7,13 +7,14 @@ import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 function App() {
-  const url= "http://localhost:3000/api/userlist";
-  const res =  fetch(url);
-  res.then(accept=>{
-    console.log(accept);
-  }).catch(e=>{
-    console.log(e);
-  })
+  const url= "http://localhost:8000/api/userlist";
+  // const res =  fetch(url);
+  // res.then(accept=>{
+  //   console.log(accept);
+  // }).catch(e=>{
+  //   console.log(e);
+  // })
+  const res =fetch(url).then(response => response.json()).then(data => console.log(data)).catch(e=>{console.log(e)});
  const [userlist, setUserList] = useState(users);
   const deleteuser = (id)=>{
     const list = userlist.filter((user)=>user.id !== id);
